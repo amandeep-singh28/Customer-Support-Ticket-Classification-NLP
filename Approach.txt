@@ -49,3 +49,63 @@ My transaction failed but money got deducted.
 
 Output:
 Payment Problem
+
+****FlowChart****
+Customer writes complaint
+            │
+            ▼
+Text Preprocessing
+            │
+            ▼
+TF-IDF Vectorization
+            │
+            ▼
+Machine Learning Model
+            │
+            ▼
+Predict Category
+            │
+            ▼
+Predict Priority
+            │
+            ▼
+Assign Correct Team
+            │
+            ▼
+Recommend Similar Resolution
+
+
+-> What exactly are we predicting?
+
+We have two prediction tasks.
+1. Ticket Category (Main NLP Model)
+Input:
+"My payment was deducted twice."
+Output:
+Payment Problem
+
+2. Ticket Priority (Second NLP Model)
+Input:
+"My account has been hacked."
+Output:
+Critical
+
+-> What is Team Routing?
+This is not AI.
+It is just business logic.
+
+For example:
+Payment Problem
+        │
+        ▼
+Finance Team
+
+Bug Report
+        │
+        ▼
+Engineering Team
+
+Login Issue
+        │
+        ▼
+Authentication Team
