@@ -1,0 +1,40 @@
+(i)Observation 1: Presence of Noisy Words in the Dataset
+
+Problem
+While exploring the Document column, it was observed that many tickets contain common conversational or email-specific words that may not contribute meaningful information for ticket classification.
+
+Examples include:
+
+dear
+thanks
+thank you
+hello
+hi
+regards
+kind regards
+good morning
+please
+lead
+
+These words are commonly used in email communication and appear across multiple ticket categories. Since they do not describe the actual issue, they are considered potential noisy words.
+
+Impact
+
+If retained, these words may:
+
+Increase the vocabulary size unnecessarily.
+Increase the dimensionality of the feature space.
+Add noise to the model.
+Reduce model interpretability.
+
+However, when using TF-IDF, words that appear in a large number of documents automatically receive a very low IDF score, reducing their influence on the final feature vectors.
+
+Proposed Solution
+
+Instead of manually removing every suspected noisy word, the project will follow an experimental approach:
+
+(i)Train a baseline model using the original text with TF-IDF.
+(ii)Evaluate the model's performance.
+(iii)Analyze the most influential features learned by the model.
+(iv)If common conversational words are found to negatively affect performance, create a custom stopword list and retrain the model.
+(v)Compare both models and keep the preprocessing strategy that yields better performance.
