@@ -38,3 +38,83 @@ Instead of manually removing every suspected noisy word, the project will follow
 (iii)Analyze the most influential features learned by the model.
 (iv)If common conversational words are found to negatively affect performance, create a custom stopword list and retrain the model.
 (v)Compare both models and keep the preprocessing strategy that yields better performance.
+
+(ii)Observation 2: TF-IDF Handles Common Words Effectively
+Problem
+
+Initially, it was assumed that the presence of common conversational words such as:
+
+hello
+thanks
+dear
+regards
+please
+good morning
+
+would significantly reduce the model's performance.
+
+Observation
+
+After training the baseline model using TF-IDF + Logistic Regression without removing these words, the model achieved:
+
+Accuracy : 86%
+
+This indicates that the presence of these common words did not severely affect the classification performance.
+
+Reason
+
+TF-IDF automatically assigns very low weights to words that appear in a large number of documents by reducing their IDF score.
+
+As a result, informative words such as:
+
+vpn
+oracle
+printer
+mailbox
+password
+wireless
+
+receive much higher importance than common conversational words.
+
+Conclusion
+
+At this stage, removing custom stopwords is not immediately necessary.
+
+Instead, any preprocessing should be performed only if it provides measurable improvements over the baseline model.
+
+(iii)Observation 3: Baseline Model Performs Well
+Observation
+
+The baseline model using:
+
+Raw Documents
+        ↓
+TF-IDF
+        ↓
+Logistic Regression
+
+achieved:
+
+Accuracy : 86%
+
+Weighted F1-score : 86%
+
+This demonstrates that TF-IDF combined with Logistic Regression forms a strong baseline for this text classification problem.
+
+(iv)Observation 4: Minority Classes are More Difficult
+
+Looking at the Classification Report:
+
+Administrative Rights
+
+Recall = 0.66
+
+This is the weakest class.
+
+Possible reasons:
+
+fewer training samples
+overlapping vocabulary with Access and HR Support
+more difficult semantic boundary
+
+This suggests that future improvements should focus on improving minority-class performance rather than simply increasing overall accuracy.
