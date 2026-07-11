@@ -124,3 +124,31 @@ This suggests that future improvements should focus on improving minority-class 
 A preprocessing pipeline was created to remove conversational words, punctuation, numbers and stopwords while preserving domain-specific technical terms.
 
 This reduces textual noise and helps the model focus on informative words during feature extraction.
+
+(vi)Observation 6
+
+A text preprocessing pipeline was implemented by converting text to lowercase, removing numbers, punctuation, English stopwords, and custom stopwords.
+
+The preprocessed text was used to retrain the Logistic Regression model.
+
+Result:
+The overall classification performance remained almost unchanged, with slight improvements in a few classes and minor degradation in others.
+
+Conclusion:
+Since TF-IDF already assigns very low weights to highly frequent words, removing these words did not significantly improve the model. Therefore, the baseline text representation is retained for further model comparison.
+
+(vii)Observation 7
+
+Two preprocessing experiments were conducted by gradually increasing the custom stopword list.
+
+Result:
+
+No significant improvement in model performance was observed.
+
+Conclusion:
+
+The TF-IDF representation was already reducing the influence of highly frequent conversational words. Additional manual stopword removal slightly degraded performance for several classes.
+
+Decision:
+
+The original Document column will be used for subsequent experiments.
