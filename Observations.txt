@@ -152,3 +152,27 @@ The TF-IDF representation was already reducing the influence of highly frequent 
 Decision:
 
 The original Document column will be used for subsequent experiments.
+
+(viii)Observation 8
+
+Instead of manually training each classifier separately, a dictionary of machine learning models is created.
+
+This allows every model to be trained and evaluated using the same preprocessing pipeline, ensuring a fair comparison while reducing code duplication.
+
+(ix)Observation 9
+
+Each model is evaluated using four metrics:
+Accuracy, Precision, Recall, and F1 Score.
+
+Since this is a multi-class classification problem with an imbalanced class distribution, weighted averaging is used to compute Precision, Recall, and F1 Score. This ensures that each class contributes to the final metric proportionally to its frequency in the dataset.
+
+(x)Observation 10
+Observation 11: The evaluation metrics of each model are stored in a list of dictionaries. After all models have been trained and evaluated, this list is converted into a Pandas DataFrame, making it easy to compare the performance of different machine learning algorithms side by side.
+
+(xi)Different machine learning algorithms perform differently on the same TF-IDF features.
+
+Logistic Regression achieved the highest overall Accuracy and F1 Score, followed very closely by Linear SVM.
+
+Random Forest performed slightly worse because tree-based models generally do not handle high-dimensional sparse TF-IDF features as effectively as linear models.
+
+Multinomial Naive Bayes produced the lowest performance because it assumes that all words are conditionally independent, which is often unrealistic for real customer support tickets.
