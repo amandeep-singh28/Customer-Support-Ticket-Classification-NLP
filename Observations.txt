@@ -118,3 +118,9 @@ overlapping vocabulary with Access and HR Support
 more difficult semantic boundary
 
 This suggests that future improvements should focus on improving minority-class performance rather than simply increasing overall accuracy.
+
+(v)Observation 5
+
+A preprocessing pipeline was created to remove conversational words, punctuation, numbers and stopwords while preserving domain-specific technical terms.
+
+This reduces textual noise and helps the model focus on informative words during feature extraction.
