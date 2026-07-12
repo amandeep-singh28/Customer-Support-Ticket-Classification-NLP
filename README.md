@@ -1,50 +1,108 @@
-# Customer Support Ticket Classification NLP
+# 🎫 Customer Support Ticket Classification using NLP
 
-An end-to-end Natural Language Processing project that classifies customer support tickets into the correct support topic group using traditional machine learning.
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-orange?logo=scikitlearn)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web%20Application-red?logo=streamlit)
+![NLP](https://img.shields.io/badge/NLP-Text%20Classification-green)
 
-The project covers data exploration, text feature engineering, baseline modeling, preprocessing experiments, error analysis, model comparison, final model saving, and deployment through a Streamlit web app.
+An end-to-end **Natural Language Processing (NLP)** project that automatically classifies customer support tickets into the appropriate support topic group using **TF-IDF Vectorization** and **Logistic Regression**.
 
-## Project Objective
+The project demonstrates the complete Machine Learning workflow including **data exploration, text preprocessing, feature engineering, baseline modeling, preprocessing experiments, error analysis, model comparison, model deployment, and Streamlit integration.**
 
-Customer support teams receive many text-based tickets every day. Manually routing each ticket to the correct support group can be slow and inconsistent.
+---
 
-This project builds a machine learning classifier that reads a ticket description and predicts one of the available `Topic_group` categories.
+# 🚀 Live Demo
 
-## Supported Topic Groups
+> **Streamlit App:** *(Add after deployment)*
 
-The model is trained to predict 8 ticket categories:
+> **GitHub Repository:** https://github.com/amandeep-singh28/Smart-Customer-Support-Ticket-Router---NLP
 
-| Topic Group | Meaning |
-| --- | --- |
-| Access | Login, account access, password, access card, and permission-related tickets |
-| Administrative rights | Requests for elevated/admin privileges |
-| Hardware | Laptop, workstation, phone, printer, scanner, and device issues |
-| HR Support | Employee onboarding, starters, and HR-related support |
-| Internal Project | Internal task, project code, and project support requests |
-| Miscellaneous | General tickets that do not clearly fit one specific group |
-| Purchase | Procurement, purchase order, equipment, and license requests |
-| Storage | Mailbox, shared folder, drive, and storage-related tickets |
+---
 
-## Dataset
+# 📑 Table of Contents
 
-The processed dataset is stored in:
+- Project Objective
+- Tech Stack
+- Supported Topic Groups
+- Dataset
+- Project Structure
+- Project Pipeline
+- Methodology
+- Model Comparison
+- Final Model
+- Final Results
+- Streamlit Application
+- Installation
+- Important Files
+- Limitations
+- Future Improvements
+- Conclusion
+- Author
+
+---
+
+# 🎯 Project Objective
+
+Customer support teams receive thousands of text-based support tickets every day. Manually reading and routing these tickets to the correct department is slow, repetitive, and error-prone.
+
+This project builds an NLP-based ticket classification system capable of reading a ticket description and automatically predicting the most appropriate **Topic Group**.
+
+The final application is deployed using **Streamlit**, allowing users to classify tickets through a simple web interface.
+
+---
+
+# 🛠 Tech Stack
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- TF-IDF Vectorizer
+- Logistic Regression
+- Joblib
+- Streamlit
+- Matplotlib
+- Seaborn
+
+---
+
+# 🎯 Supported Topic Groups
+
+The model predicts the following **8 support categories**.
+
+| Topic Group | Description |
+| ------------ | ----------- |
+| 🔑 Access | Login, password, permissions, VPN and account related issues |
+| 🔒 Administrative Rights | Administrator privilege requests |
+| 💻 Hardware | Laptop, desktop, printer, scanner and device issues |
+| 👨‍💼 HR Support | Employee onboarding and HR-related requests |
+| 📁 Internal Project | Internal project support requests |
+| 📄 Miscellaneous | General tickets not belonging to a specific category |
+| 🛒 Purchase | Equipment, purchase order and license requests |
+| 📦 Storage | Mailbox, storage, drive and shared folder issues |
+
+---
+
+# 📂 Dataset
+
+The processed dataset is available at:
 
 ```text
 Dataset/all_tickets_processed_improved_v3.csv
 ```
 
-Dataset summary:
+### Dataset Summary
 
 | Detail | Value |
-| --- | --- |
-| Total records | 47,837 |
-| Columns | `Document`, `Topic_group` |
-| Number of classes | 8 |
+|---------|------:|
+| Total Records | 47,837 |
+| Features | Document, Topic_group |
+| Number of Classes | 8 |
 
-Class distribution:
+### Class Distribution
 
 | Topic Group | Records |
-| --- | ---: |
+|--------------|-------:|
 | Hardware | 13,617 |
 | HR Support | 10,915 |
 | Access | 7,125 |
@@ -52,212 +110,345 @@ Class distribution:
 | Storage | 2,777 |
 | Purchase | 2,464 |
 | Internal Project | 2,119 |
-| Administrative rights | 1,760 |
+| Administrative Rights | 1,760 |
 
-The dataset is imbalanced, so weighted evaluation metrics were used during model evaluation.
+The dataset is imbalanced; therefore **weighted evaluation metrics** were used during model evaluation.
 
-## Project Structure
+---
+
+# 📁 Project Structure
 
 ```text
 Customer Support Ticket Classification NLP/
-|
-|-- app.py
-|-- Observations.txt
-|-- Smart_IT_Support_Ticket_Classifier_Project_Plan_Updated.pdf
-|
-|-- Dataset/
-|   |-- all_tickets_processed_improved_v3.csv
-|
-|-- Models/
-|   |-- logistic_model.pkl
-|   |-- tfidf_vectorizer.pkl
-|
-|-- Notebooks/
-|   |-- data.csv
-|   |-- baselineResults.csv
-|   |-- 01.ipynb
-|   |-- 02.ipynb
-|   |-- 03_BaselineModel.ipynb
-|   |-- 04_ErrorAnalysis.ipynb
-|   |-- 05_TextPreprocessing.ipynb
-|   |-- 06_ModelComparison.ipynb
-|   |-- 07_FinalModel.ipynb
-|
-|-- Comparison/
-|   |-- Comparison.docx
+
+│── app.py
+│── README.md
+│── Observations.txt
+│── Smart_IT_Support_Ticket_Classifier_Project_Plan_Updated.pdf
+│
+├── Dataset/
+│   └── all_tickets_processed_improved_v3.csv
+│
+├── Models/
+│   ├── logistic_model.pkl
+│   └── tfidf_vectorizer.pkl
+│
+├── Notebooks/
+│   ├── 01.ipynb
+│   ├── 02.ipynb
+│   ├── 03_BaselineModel.ipynb
+│   ├── 04_ErrorAnalysis.ipynb
+│   ├── 05_TextPreprocessing.ipynb
+│   ├── 06_ModelComparison.ipynb
+│   ├── 07_FinalModel.ipynb
+│   ├── baselineResults.csv
+│   └── data.csv
+│
+└── Comparison/
+    └── Comparison.docx
 ```
 
-## Workflow
+---
 
-### 1. Data Understanding
-
-The ticket text is stored in the `Document` column and the target class is stored in the `Topic_group` column.
-
-During exploration, many tickets were found to contain common email-style words such as:
+# 🔄 Project Pipeline
 
 ```text
-dear, thanks, hello, hi, regards, please, good morning
+Raw Dataset
+      │
+      ▼
+Data Exploration
+      │
+      ▼
+Text Understanding
+      │
+      ▼
+TF-IDF Vectorization
+      │
+      ▼
+Baseline Model
+      │
+      ▼
+Error Analysis
+      │
+      ▼
+Text Preprocessing Experiments
+      │
+      ▼
+Model Comparison
+      │
+      ▼
+Final Model Selection
+      │
+      ▼
+Model Serialization
+      │
+      ▼
+Streamlit Deployment
 ```
 
-These words appear across many categories and do not directly describe the actual technical issue.
+---
 
-### 2. Baseline Model
+# 🧠 Methodology
 
-The first strong baseline used:
+## 1️⃣ Data Understanding
+
+The ticket text is stored in the **Document** column while **Topic_group** represents the target label.
+
+Exploration revealed many conversational email words such as:
 
 ```text
-Raw ticket text -> TF-IDF Vectorizer -> Logistic Regression
+dear
+hello
+thanks
+regards
+please
+good morning
 ```
 
-This baseline performed well because TF-IDF automatically reduces the importance of very common words and gives more weight to informative terms such as `vpn`, `printer`, `mailbox`, `password`, `oracle`, and `wireless`.
+These words appear frequently but provide very little information for ticket classification.
 
-### 3. Text Preprocessing Experiments
+---
 
-A cleaning pipeline was tested by:
+## 2️⃣ Baseline Model
 
-- converting text to lowercase
-- removing punctuation
-- removing numbers
-- removing English stopwords
-- removing custom conversational stopwords
+The first baseline model used the following pipeline:
 
-The preprocessing experiments did not significantly improve overall performance. In some classes, performance slightly decreased.
+```text
+Document
+      │
+      ▼
+TF-IDF Vectorizer
+      │
+      ▼
+Logistic Regression
+```
 
-Final decision: keep the original `Document` text representation with TF-IDF because it already handled common words effectively.
+The baseline already achieved strong performance because TF-IDF naturally reduces the importance of highly frequent words while emphasizing informative technical terms.
 
-### 4. Error Analysis
+---
 
-Prediction results were saved in:
+## 3️⃣ Text Preprocessing Experiments
+
+Multiple preprocessing experiments were conducted.
+
+The following operations were tested:
+
+- Lowercase conversion
+- Punctuation removal
+- Number removal
+- English stopword removal
+- Custom stopword removal
+
+Although the text became cleaner, the overall model performance remained almost unchanged.
+
+**Final Decision:** Use the original document representation because TF-IDF already handled common words effectively.
+
+---
+
+## 4️⃣ Error Analysis
+
+Prediction results were exported to
 
 ```text
 Notebooks/baselineResults.csv
 ```
 
-This file contains:
+Each incorrect prediction was manually inspected to understand model weaknesses.
 
-```text
-Document, Actual, Predicted
-```
+The most challenging class was **Administrative Rights** due to fewer training examples and overlap with Access and HR Support.
 
-It was used to inspect correct and incorrect predictions. The weakest class was `Administrative rights`, mainly because it has fewer samples and overlaps with categories such as `Access` and `HR Support`.
+---
 
-### 5. Model Comparison
+# 📊 Model Comparison
 
-Multiple models were compared using the same TF-IDF features:
+Several Machine Learning algorithms were evaluated using identical TF-IDF features.
 
 | Model | Accuracy | Precision | Recall | F1 Score |
-| --- | ---: | ---: | ---: | ---: |
-| Logistic Regression | 85.82% | 86.26% | 85.82% | 85.83% |
+|--------|---------:|----------:|--------:|---------:|
+| Logistic Regression | **85.82%** | **86.26%** | **85.82%** | **85.83%** |
 | Linear SVM | 85.61% | 85.73% | 85.61% | 85.62% |
 | Random Forest | 83.09% | 84.21% | 83.09% | 83.05% |
 | Multinomial Naive Bayes | 73.76% | 78.12% | 73.76% | 72.60% |
 
-Logistic Regression achieved the best overall score and was selected as the final model.
+### 🏆 Selected Model
 
-## Final Model
+**Logistic Regression** was selected because it achieved the highest overall performance while remaining simple, interpretable, and highly effective for sparse TF-IDF features.
 
-The final model artifacts are stored in the `Models/` folder:
+---
 
-| File | Purpose |
-| --- | --- |
-| `logistic_model.pkl` | Trained Logistic Regression classifier |
-| `tfidf_vectorizer.pkl` | Fitted TF-IDF vectorizer used to transform ticket text |
+# 🤖 Final Model
 
-Final selected pipeline:
+Saved Model:
 
 ```text
-Ticket Description -> TF-IDF Vectorizer -> Logistic Regression -> Predicted Topic Group
+Models/logistic_model.pkl
 ```
 
-## Performance Summary
+Saved TF-IDF Vectorizer:
 
-The final model achieved approximately:
+```text
+Models/tfidf_vectorizer.pkl
+```
+
+Final prediction pipeline:
+
+```text
+Ticket Description
+        │
+        ▼
+TF-IDF Vectorizer
+        │
+        ▼
+Logistic Regression
+        │
+        ▼
+Predicted Topic Group
+```
+
+---
+
+# 📈 Final Results
 
 | Metric | Score |
-| --- | ---: |
-| Accuracy | 85.82% |
-| Weighted F1 Score | 85.83% |
+|---------|------:|
+| Accuracy | **85.82%** |
+| Weighted F1 Score | **85.83%** |
 
-Class-level observations:
+### Observations
 
-- `Purchase`, `Storage`, and `Access` performed strongly.
-- `Administrative rights` had the lowest recall.
-- `Hardware` and `Miscellaneous` sometimes overlap because some support requests contain broad or mixed issue descriptions.
+- Purchase, Storage and Access achieved strong performance.
+- Administrative Rights remains the most challenging class.
+- Hardware and Miscellaneous occasionally overlap because of similar ticket wording.
 
-## Streamlit App
+---
 
-The project includes a Streamlit interface in:
+# 📸 Application Screenshots
 
-```text
-app.py
-```
+## Home Page
 
-The app loads the saved TF-IDF vectorizer and Logistic Regression model, accepts a ticket description, and returns the predicted topic group.
+*(Add Screenshot Here)*
 
-Run the app with:
+---
+
+## Prediction Example
+
+*(Add Screenshot Here)*
+
+---
+
+# 🌐 Streamlit Application
+
+The project includes an interactive Streamlit application.
+
+Run locally using:
 
 ```bash
 streamlit run app.py
 ```
 
-## Required Libraries
+The application:
 
-The project uses common Python data science and app libraries:
+- Accepts ticket descriptions
+- Predicts the support topic group
+- Displays supported categories
+- Shows model information
+- Includes verified sample tickets
+- Explains project limitations
+
+---
+
+# ⚙️ Installation
+
+Clone the repository
 
 ```bash
-pip install pandas numpy scikit-learn joblib streamlit matplotlib seaborn
+git clone https://github.com/amandeep-singh28/Smart-Customer-Support-Ticket-Router---NLP.git
 ```
 
-Main libraries used:
+Move into the project directory
 
-- `pandas`
-- `numpy`
-- `scikit-learn`
-- `joblib`
-- `streamlit`
-- `matplotlib`
-- `seaborn`
+```bash
+cd Smart-Customer-Support-Ticket-Router---NLP
+```
 
-## Important Files
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the Streamlit application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+# 📄 Important Files
 
 | File | Description |
-| --- | --- |
-| `Observations.txt` | Notes and conclusions from experiments |
-| `Notebooks/03_BaselineModel.ipynb` | Baseline TF-IDF + Logistic Regression model |
-| `Notebooks/04_ErrorAnalysis.ipynb` | Analysis of actual vs predicted results |
-| `Notebooks/05_TextPreprocessing.ipynb` | Text cleaning and preprocessing experiments |
-| `Notebooks/06_ModelComparison.ipynb` | Comparison of multiple machine learning models |
-| `Notebooks/07_FinalModel.ipynb` | Final model training and artifact saving |
-| `Notebooks/baselineResults.csv` | Saved prediction results for error analysis |
-| `Models/logistic_model.pkl` | Final trained classifier |
-| `Models/tfidf_vectorizer.pkl` | Final fitted vectorizer |
-| `app.py` | Streamlit deployment app |
+|------|-------------|
+| Observations.txt | Experimental observations |
+| 03_BaselineModel.ipynb | Baseline TF-IDF model |
+| 04_ErrorAnalysis.ipynb | Error Analysis |
+| 05_TextPreprocessing.ipynb | Preprocessing Experiments |
+| 06_ModelComparison.ipynb | Model Comparison |
+| 07_FinalModel.ipynb | Final Model |
+| logistic_model.pkl | Trained classifier |
+| tfidf_vectorizer.pkl | Saved TF-IDF Vectorizer |
+| app.py | Streamlit Application |
 
-## Limitations
+---
 
-This project was created for personal learning and portfolio purposes.
+# ⚠️ Limitations
 
-The model can make incorrect predictions when:
+This project was developed for **learning and portfolio purposes**.
 
-- the ticket is too short
-- the ticket contains multiple issues
-- the wording is very different from the training data
-- the ticket belongs to a minority class
-- the issue overlaps between categories
+The model may produce incorrect predictions when:
 
-The predictions should be treated as model suggestions, not final business decisions.
+- The ticket is extremely short.
+- The issue belongs to multiple categories.
+- The wording differs significantly from the training data.
+- The ticket belongs to a minority class.
+- The issue is ambiguous.
 
-## Future Improvements
+Predictions should be treated as **decision support**, not final business decisions.
 
-Possible next steps:
+---
 
-- collect more data for minority classes, especially `Administrative rights`
-- tune Logistic Regression hyperparameters
-- try class balancing techniques
-- compare with transformer-based models such as BERT
-- add prediction confidence scores to the Streamlit app
-- improve the UI with better sample tickets and category explanations
+# 🚀 Future Improvements
 
-## Conclusion
+- Improve minority class performance
+- Hyperparameter tuning
+- Class balancing techniques
+- Compare with transformer-based models (BERT)
+- Display prediction confidence
+- Show Top-3 predicted categories
+- Enhance Streamlit UI
 
-This project shows that a simple and interpretable NLP pipeline using TF-IDF and Logistic Regression can perform well for multi-class customer support ticket classification. The final model reaches about 86% accuracy and provides a practical baseline for automatic ticket routing.
+---
+
+# ✅ Conclusion
+
+This project demonstrates that a well-designed traditional NLP pipeline using **TF-IDF** and **Logistic Regression** can effectively solve multi-class customer support ticket classification.
+
+The project covers the complete Machine Learning lifecycle—from dataset understanding and experimentation to deployment—making it a practical end-to-end NLP portfolio project.
+
+---
+
+# 👨‍💻 Author
+
+**Amandeep Singh**
+
+B.Tech Computer Science & Engineering
+
+Lovely Professional University
+
+GitHub: https://github.com/amandeep-singh28
+
+---
+
+# 📄 License
+
+This project is intended for educational, learning, and portfolio purposes.
