@@ -19,6 +19,20 @@ The project demonstrates the complete Machine Learning workflow including **data
 
 ---
 
+# 📸 Application Screenshots
+
+## 🏠 Home Page
+
+![Home Page](assets/home_page.png)
+
+---
+
+## 🎯 Prediction Example
+
+![Prediction](assets/prediction.png)
+
+---
+
 # 📑 Table of Contents
 
 - Project Objective
