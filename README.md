@@ -13,7 +13,7 @@ The project demonstrates the complete Machine Learning workflow including **data
 
 # 🚀 Live Demo
 
-> **Streamlit App:** *(Add after deployment)*
+> **Streamlit App:** https://customer-support-ticket-classification-nlp.streamlit.app/
 
 > **GitHub Repository:** https://github.com/amandeep-singh28/Smart-Customer-Support-Ticket-Router---NLP
 
