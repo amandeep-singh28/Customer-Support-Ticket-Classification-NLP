@@ -18,6 +18,41 @@ st.set_page_config(
     layout="centered"
 )
 
+st.markdown(
+    """
+    <style>
+    html, body, [class*="css"] {
+        font-size: 18px;
+    }
+
+    .stMarkdown, .stWrite, .stInfo, .stWarning, .stSuccess, .stCaption {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 2.6rem !important;
+    }
+
+    h2, h3 {
+        font-size: 1.6rem !important;
+    }
+
+    textarea, input, button {
+        font-size: 18px !important;
+    }
+
+    [data-testid="stMetricLabel"],
+    [data-testid="stMetricValue"] {
+        font-size: 1.15rem !important;
+    }
+
+    .stButton button {
+        min-height: 3rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 # ==========================
 # Header
 # ==========================
